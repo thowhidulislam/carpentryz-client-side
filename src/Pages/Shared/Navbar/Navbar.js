@@ -6,29 +6,33 @@ import CustomLink from '../CustomLink';
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    const logOut = () => {
+        signOut(auth)
+    }
     const menuItems = <>
-        <li><CustomLink to='/home' className="hover:text-[#fab915] ">Home</CustomLink></li>
+        <li><CustomLink to='/home' >Home</CustomLink></li>
         <li><CustomLink to='/dashboard' className="hover:text-[#fab915]">Dashboard</CustomLink></li>
         {
             user ?
                 <div class="dropdown dropdown-end">
-                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img src="https://api.lorem.space/image/face?hash=33791" />
+                    <label tabIndex="0" class="active:bg-transparent">
+                        <div class="w-70 ">
+                            <li className='capitalize'><CustomLink to=''>{user.displayName}</CustomLink></li>
+                            <p></p>
                         </div>
                     </label>
-                    <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                    <ul tabIndex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 w-52">
                         <li>
-                            <Link to='/' class="justify-between">
+                            <Link to='/' className="justify-between text-black">
                                 Profile
-                                <span class="badge">New</span>
                             </Link>
                         </li>
-                        <li><Link to='/'>Settings</Link></li>
-                        <li><Link to='/'>Logout</Link></li>
+                        <li><Link to='/' className='text-black'>Settings</Link></li>
+                        <li><button onClick={logOut} className='text-black'>Logout</button></li>
                     </ul>
                 </div>
                 :
