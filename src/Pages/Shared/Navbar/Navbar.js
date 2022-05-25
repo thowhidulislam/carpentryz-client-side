@@ -15,7 +15,7 @@ const Navbar = () => {
     }
     const menuItems = <>
         <li><CustomLink to='/home' >Home</CustomLink></li>
-        <li><CustomLink to='/dashboard' className="hover:text-[#fab915]">Dashboard</CustomLink></li>
+        {user && <li><CustomLink to='/dashboard' className="hover:text-[#fab915]">Dashboard</CustomLink></li>}
         {
             user ?
                 <div class="dropdown dropdown-end">
