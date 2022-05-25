@@ -14,7 +14,7 @@ const Product = ({ product }) => {
                 <p>{description}</p>
                 <p>Available Quantity: {availableQuantity}</p>
                 <p>Minimum Order Quantity: {minimumOrderQuantity}</p>
-                <p>Price: {price}</p>
+                <p>Price: ${price}</p>
                 <p></p>
                 <div class="card-actions justify-center">
                     <Link to={`/purchase/${_id}`}><button class="btn btn-primary text-black hover:bg-secondary hover:text-white" >Buy Now</button></Link>

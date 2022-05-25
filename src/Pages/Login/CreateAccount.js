@@ -1,11 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth'
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
+import SocialLogin from './SocialLogin';
 
 const CreateAccount = () => {
+    const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = async data => {
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth)
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth)
+    let errorElement
 
+    useEffect(() => {
+        if (user) {
+            navigate('/home')
+        }
+    }, [user, navigate])
+
+    if (error || updateError) {
+        errorElement = <>
+            <p className='text-red-500'>Error:{error.message}</p>
+        </>
+    }
+    if (loading || updating) {
+        return <Loading></Loading>
+    }
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password)
+        await updateProfile({ displayName: data.name })
     }
     return (
         <div className='flex h-screen justify-center items-center'>
@@ -82,11 +111,12 @@ const CreateAccount = () => {
 
                             </label>
                         </div>
+                        {errorElement}
                         <input className='btn w-full max-w-xs btn-primary text-black hover:bg-secondary hover:text-white' type="submit" value='Sign Up' />
                     </form>
                     <p><small>Already have an account? <Link className='text-primary hover:text-secondary' to='/login'>Please login</Link></small></p>
                     <div className="divider" > OR</div >
-                    <button className="btn btn-outline text-black hover:bg-secondary hover:text-white">Continue with Google</button>
+                    <SocialLogin></SocialLogin>
                 </div >
             </div >
         </div >

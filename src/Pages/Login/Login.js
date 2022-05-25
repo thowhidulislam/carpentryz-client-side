@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+    const navigate = useNavigate()
+    let errorElement
+    useEffect(() => {
+        if (user) {
+            navigate('/home')
+        }
+    }, [navigate, user])
 
-    const onSubmit = data => {
+    if (error) {
+        errorElement = <>
+            <p className='text-red-500'>Error: {error.message}</p>
+        </>
+    }
 
+    if (loading) {
+        return <Loading></Loading>
+    }
+
+
+    const onSubmit = async data => {
+        await signInWithEmailAndPassword(data.email, data.password)
     }
     return (
         <div className='flex h-screen justify-center items-center'>
@@ -63,12 +91,12 @@ const Login = () => {
                             </label>
                             <p className='btn-link capitalize justify-start pb-2 pl-1 cursor-pointer hover:text-secondary'><small>Forgot Password?</small></p>
                         </div>
-
+                        {errorElement}
                         <input className='btn w-full max-w-xs btn-primary text-black  hover:bg-secondary hover:text-white' type="submit" value='Login' />
                     </form>
                     <p><small>New to Carpentryz? <Link className='text-primary hover:text-secondary' to='/register'>Create new account</Link></small></p>
                     <div className="divider" > OR</div >
-                    <button className="btn btn-outline hover:bg-secondary text-black hover:text-white">Continue with Google</button>
+                    <SocialLogin></SocialLogin>
                 </div >
             </div >
         </div >
