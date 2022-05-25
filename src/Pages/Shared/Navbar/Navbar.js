@@ -3,12 +3,13 @@ import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 import React from 'react';
 import './Navbar.css'
 import CustomLink from '../CustomLink';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const menuItems = <>
         <li><CustomLink to='/home' className="hover:text-[#fab915] ">Home</CustomLink></li>
         <li><CustomLink to='/dashboard' className="hover:text-[#fab915]">Dashboard</CustomLink></li>
-        <li><FontAwesomeIcon icon={faRightToBracket} className="text-white btn btn-ghost btn-xs" /></li>
+        <li title='login'><Link to='/login' className='active:bg-transparent'><FontAwesomeIcon icon={faRightToBracket} className="text-white btn btn-ghost btn-xs" /></Link></li>
     </>
     return (
         <div className="navbar bg-[#202447] text-white lg:px-24">

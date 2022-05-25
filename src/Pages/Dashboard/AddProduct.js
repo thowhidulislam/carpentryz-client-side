@@ -147,7 +147,7 @@ const AddProduct = () => {
                             className="input input-bordered w-full max-w-xs"
                             {...register('productImage')} />
                     </div>
-                    <input className='btn btn-md w-full max-w-xs bg-primary text-black border-0 hover:text-white hover:bg-secondary mt-7' type="submit" value='ADD' />
+                    <input className='btn btn-md w-full max-w-xs bg-primary text-black border-0 hover:text-white hover:bg-secondary mt-7 text-xl' type="submit" value='ADD' />
                 </form>
             </div>
         </div>
