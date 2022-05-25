@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import ProductDetails from './ProductDetails';
 
 const Purchase = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors, isValid, isDirty }, getValues } = useForm({
+        mode: "onChange"
+    })
     const [productDetails, setProductDetails] = useState([])
     const { id } = useParams()
 
@@ -25,6 +25,22 @@ const Purchase = () => {
 
 
     const onSubmit = async data => {
+        const orderDetails = getValues()
+        axios.post('http://localhost:5000/order', data).then(function (response) {
+            console.log(response)
+        })
+        const quantity = orderDetails.quantity
+        const previousQuantity = productDetails.availableQuantity
+        const newQuantity = previousQuantity - quantity
+        console.log(orderDetails, newQuantity)
+        axios.patch(`http://localhost:5000/products/${id}`, { newQuantity }).then(function (response) {
+            console.log(response)
+            axios.get(`http://localhost:5000/products/${id}`).then(function (response) {
+                console.log(response.data)
+                setProductDetails(response.data.result)
+
+            })
+        })
 
     }
 
@@ -38,7 +54,7 @@ const Purchase = () => {
                     <p>Minimun Order Quantity: {productDetails.minimumOrderQuantity} </p>
                     <p>Available Quantity: {productDetails.availableQuantity}</p>
                     <p>
-                        <smaall>Price: ${productDetails.price}</smaall>
+                        <small>Price: ${productDetails.price}</small>
                     </p>
 
                 </div>
@@ -103,16 +119,6 @@ const Purchase = () => {
                             {errors.quantity?.type === 'min' && <span className="label-text-alt text-red-500">{errors.quantity.message}</span>}
                         </label>
                     </div>
-                    <div className="form-control w-full max-w-xs">
-                        <input
-                            type="text"
-                            className="input input-bordered w-full max-w-xs"
-                            placeholder='Total Price'
-                            {...register('totalPrice')} />
-
-                        <label className="label">
-                        </label>
-                    </div>
 
                     <div className="form-control w-full max-w-xs">
                         <input
@@ -146,9 +152,7 @@ const Purchase = () => {
                         </label>
                     </div>
 
-                    {errors.quantity?.type === 'max' ?
-                        <input className='btn btn-primary w-full max-w-xs text-black border-0 hover:text-white hover:bg-secondary mt-7' type="submit" value='Place Order' disabled /> :
-                        <input className='btn btn-primary w-full max-w-xs text-black border-0 hover:text-white hover:bg-secondary mt-7' type="submit" value='Place Order' />}
+                    <input className='btn btn-primary w-full max-w-xs text-black border-0 hover:text-white hover:bg-secondary mt-7' type="submit" value='Place Order' disabled={!isValid || !isDirty} />
                 </form>
             </div>
 
