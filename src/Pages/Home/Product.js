@@ -1,25 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
-    const navigate = useNavigate()
     const { name, description, minimumOrderQuantity, availableQuantity, price, _id, image } = product
-    const { id } = useParams()
 
-    const handleBuy = () => {
 
-        fetch(`http://localhost:5000/purchase/${id}`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
-        navigate(`/products/${id}`)
+    const handleBuy = (_id) => {
+
+        // fetch(`http://localhost:5000/products/${_id}`, {
+        //     method: 'GET',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     }
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data.result)
+        //     })
+
     }
 
     return (
@@ -34,7 +33,7 @@ const Product = ({ product }) => {
                 <p>Price: {price}</p>
                 <p></p>
                 <div class="card-actions justify-center">
-                    <button class="btn btn-primary " onClick={() => handleBuy(_id)}>Buy Now</button>
+                    <Link to={`/purchase/${_id}`}><button class="btn btn-primary " onClick={() => handleBuy(_id)}>Buy Now</button></Link>
                 </div>
             </div>
         </div >
