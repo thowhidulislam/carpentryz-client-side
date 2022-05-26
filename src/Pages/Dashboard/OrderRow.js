@@ -2,22 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const OrderRow = ({ order, index, setCancelingOrder }) => {
-    const { name, email, quantity, address, totalPrice, mobileNumber, paid } = order
-    const handleCancelOrder = () => {
-
-    }
+    const { name, email, quantity, address, price, mobileNumber, paid, _id, productName } = order
 
     return (
         <tr>
             <th>{index + 1}</th>
             <td>{name}</td>
             <td>{email}</td>
+            <td>{productName}</td>
             <td>{quantity}</td>
-            <td>{totalPrice}</td>
+            <td>{price}</td>
             <td>{address}</td>
             <td>{mobileNumber}</td>
             <td>{
-                !paid && <Link to=''><button class="btn btn-xs px-6 btn-primary text-black hover:btn-secondary hover:text-white">Pay</button></Link>
+                !paid && <Link to={`dashboard/payment/${_id}`}><button class="btn btn-xs px-6 btn-primary text-black hover:btn-secondary hover:text-white">Pay</button></Link>
 
             }
                 {

@@ -17,7 +17,7 @@ const Product = ({ product }) => {
                 <p>Price: ${price}</p>
                 <p></p>
                 <div class="card-actions justify-center">
-                    <Link to={`/purchase/${_id}`}><button class="btn btn-primary text-black hover:bg-secondary hover:text-white" >Buy Now</button></Link>
+                    <Link to={`/purchase/${_id}`}><button class="btn btn-primary text-black hover:btn-secondary hover:text-white" >Buy Now</button></Link>
                 </div>
             </div>
         </div >

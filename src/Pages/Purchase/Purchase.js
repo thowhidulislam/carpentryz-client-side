@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 
 const Purchase = () => {
     const [user] = useAuthState(auth);
-    const { register, handleSubmit, formState: { errors, isValid, isDirty }, getValues } = useForm({
+    const { register, handleSubmit, formState: { errors, isValid, isDirty }, getValues, watch, setValue, reset } = useForm({
         mode: "onChange"
     })
     const [productDetails, setProductDetails] = useState([])
@@ -26,16 +26,28 @@ const Purchase = () => {
             })
     }, [id])
 
+    const watchQuantity = watch('quantity')
+    useEffect(() => {
+        if (watchQuantity) {
+            const totalPrice = () => {
+                const price = productDetails.price * watchQuantity
+                return price
+            }
+            setValue('price', totalPrice())
+        }
+    }, [setValue, watchQuantity, productDetails.price])
+
 
     const onSubmit = async data => {
         const orderDetails = getValues()
         const order = {
             name: orderDetails.name,
             email: orderDetails.email,
-            'product name': productDetails.name,
+            productName: productDetails.name,
             quantity: orderDetails.quantity,
+            price: orderDetails.price,
             address: orderDetails.address,
-            'mobile number': orderDetails.mobileNumber,
+            mobileNumber: orderDetails.mobileNumber,
 
         }
         axios.post('http://localhost:5000/order', order).then(function (response) {
@@ -50,6 +62,7 @@ const Purchase = () => {
             axios.get(`http://localhost:5000/products/${id}`).then(function (response) {
                 console.log(response.data)
                 setProductDetails(response.data.result)
+                reset()
             })
         })
     }
@@ -78,15 +91,8 @@ const Purchase = () => {
                             type="text"
                             className="input input-bordered w-full max-w-xs"
                             placeholder='Name'
-                            value={user.displayName}
-                            readOnly
-                            disabled
-                            {...register('name', {
-                                required: {
-                                    value: true,
-                                    message: 'Name is required'
-                                }
-                            })} />
+                            value={user?.displayName}
+                            {...register('name')} />
                         <label className="label">
                             {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                         </label>
@@ -97,15 +103,8 @@ const Purchase = () => {
                             type="email"
                             className="input input-bordered w-full max-w-xs"
                             placeholder='Email'
-                            value={user.email}
-                            readOnly
-                            disabled
-                            {...register('email', {
-                                required: {
-                                    value: true,
-                                    message: 'email is required'
-                                }
-                            })} />
+
+                            {...register('email')} value={user?.email} />
                         <label className="label">
                             {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         </label>
@@ -140,6 +139,16 @@ const Purchase = () => {
                         <input
                             type="text"
                             className="input input-bordered w-full max-w-xs"
+                            placeholder='Total Price'
+                            {...register('price')} />
+                        <label className="label">
+
+                        </label>
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <input
+                            type="text"
+                            className="input input-bordered w-full max-w-xs"
                             placeholder='Address'
                             {...register('address', {
                                 required: {
@@ -168,7 +177,7 @@ const Purchase = () => {
                         </label>
                     </div>
 
-                    <input className='btn btn-primary w-full max-w-xs text-black border-0 hover:text-white hover:bg-secondary mt-7' type="submit" value='Place Order' disabled={!isValid || !isDirty} />
+                    <input className='btn btn-primary w-full max-w-xs text-black border-0 hover:text-white hover:btn-secondary mt-7' type="submit" value='Place Order' disabled={!isValid || !isDirty} />
                 </form>
             </div>
 

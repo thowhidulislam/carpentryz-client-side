@@ -112,7 +112,7 @@ const CreateAccount = () => {
                             </label>
                         </div>
                         {errorElement}
-                        <input className='btn w-full max-w-xs btn-primary text-black hover:bg-secondary hover:text-white' type="submit" value='Sign Up' />
+                        <input className='btn w-full max-w-xs btn-primary text-black hover:btn-secondary hover:text-white' type="submit" value='Sign Up' />
                     </form>
                     <p><small>Already have an account? <Link className='text-primary hover:text-secondary' to='/login'>Please login</Link></small></p>
                     <div className="divider" > OR</div >

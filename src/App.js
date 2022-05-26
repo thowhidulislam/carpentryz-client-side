@@ -12,6 +12,7 @@ import CreateAccount from './Pages/Login/CreateAccount';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import AddReview from './Pages/Dashboard/AddReview';
 import MyOrders from './Pages/Dashboard/MyOrders';
+import Payment from './Pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='addProduct' element={<AddProduct></AddProduct>}></Route>
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
           <Route path='myOrder' element={<MyOrders></MyOrders>}></Route>
+          <Route path='payment/:id' element={<Payment></Payment>}></Route>
         </Route>
         <Route path='/purchase/:id' element={<Purchase></Purchase>}></Route>
         <Route path='login' element={<Login></Login>}></Route>

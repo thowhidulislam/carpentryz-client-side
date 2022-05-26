@@ -27,6 +27,7 @@ const MyOrders = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Total Price</th>
                             <th>Address</th>
