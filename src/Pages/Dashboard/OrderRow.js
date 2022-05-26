@@ -15,7 +15,7 @@ const OrderRow = ({ order, index, setCancelingOrder }) => {
             <td>{address}</td>
             <td>{mobileNumber}</td>
             <td>{
-                !paid && <Link to={`dashboard/payment/${_id}`}><button class="btn btn-xs px-6 btn-primary text-black hover:btn-secondary hover:text-white">Pay</button></Link>
+                !paid && <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-xs px-6 btn-primary text-black hover:btn-secondary hover:text-white">Pay</button></Link>
 
             }
                 {

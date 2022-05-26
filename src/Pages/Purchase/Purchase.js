@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const Purchase = () => {
@@ -52,6 +53,13 @@ const Purchase = () => {
         }
         axios.post('http://localhost:5000/order', order).then(function (response) {
             console.log(response)
+            if (response.data.result.insertedId) {
+                toast.success('Order is received successfully')
+            }
+            else {
+                toast.error('Failed to receive order')
+            }
+
         })
         const quantity = orderDetails.quantity
         const previousQuantity = productDetails.availableQuantity
@@ -170,6 +178,9 @@ const Purchase = () => {
                                 required: {
                                     value: true,
                                     message: 'Mobile number is required'
+                                },
+                                minLength: {
+                                    value: 11
                                 }
                             })} />
                         <label className="label">
