@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
+import CancelConfirmationModal from './CancelConfirmationModal';
 import OrderRow from './OrderRow';
 
 const MyOrders = () => {
     const [user, loading, error] = useAuthState(auth);
+    const [cancelingOrder, setCancelingOrder] = useState(null)
     const { data: orders, isLoading, queryError, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?email=${user?.email}`).then(res => res.json()))
     if (user) {
         refetch()
@@ -39,11 +41,18 @@ const MyOrders = () => {
                                 key={order._id}
                                 order={order}
                                 index={index}
+                                setCancelingOrder={setCancelingOrder}
                             ></OrderRow>)
                         }
                     </tbody>
                 </table>
             </div>
+            {
+                cancelingOrder && <CancelConfirmationModal
+                    cancelingOrder={cancelingOrder}
+                    setCancelingOrder={setCancelingOrder}
+                ></CancelConfirmationModal>
+            }
         </div>
     );
 };

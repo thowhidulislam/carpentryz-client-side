@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Purchase = () => {
+    const [user] = useAuthState(auth);
     const { register, handleSubmit, formState: { errors, isValid, isDirty }, getValues } = useForm({
         mode: "onChange"
     })
@@ -26,7 +29,16 @@ const Purchase = () => {
 
     const onSubmit = async data => {
         const orderDetails = getValues()
-        axios.post('http://localhost:5000/order', data).then(function (response) {
+        const order = {
+            name: orderDetails.name,
+            email: orderDetails.email,
+            'product name': productDetails.name,
+            quantity: orderDetails.quantity,
+            address: orderDetails.address,
+            'mobile number': orderDetails.mobileNumber,
+
+        }
+        axios.post('http://localhost:5000/order', order).then(function (response) {
             console.log(response)
         })
         const quantity = orderDetails.quantity
@@ -38,10 +50,8 @@ const Purchase = () => {
             axios.get(`http://localhost:5000/products/${id}`).then(function (response) {
                 console.log(response.data)
                 setProductDetails(response.data.result)
-
             })
         })
-
     }
 
     return (
@@ -51,7 +61,7 @@ const Purchase = () => {
                 <div class="card-body pt-0">
                     <h2 class="text-4xl">{productDetails.name}</h2>
                     <p>{productDetails.description}</p>
-                    <p>Minimun Order Quantity: {productDetails.minimumOrderQuantity} </p>
+                    <p>Minimum Order Quantity: {productDetails.minimumOrderQuantity} </p>
                     <p>Available Quantity: {productDetails.availableQuantity}</p>
                     <p>
                         <small>Price: ${productDetails.price}</small>
@@ -68,6 +78,9 @@ const Purchase = () => {
                             type="text"
                             className="input input-bordered w-full max-w-xs"
                             placeholder='Name'
+                            value={user.displayName}
+                            readOnly
+                            disabled
                             {...register('name', {
                                 required: {
                                     value: true,
@@ -84,6 +97,9 @@ const Purchase = () => {
                             type="email"
                             className="input input-bordered w-full max-w-xs"
                             placeholder='Email'
+                            value={user.email}
+                            readOnly
+                            disabled
                             {...register('email', {
                                 required: {
                                     value: true,
