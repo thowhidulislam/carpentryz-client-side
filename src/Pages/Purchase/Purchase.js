@@ -77,10 +77,10 @@ const Purchase = () => {
 
     return (
         <div className='mx-24 grid grid-cols-2 gap-10 my-16'>
-            <div class="card  bg-base-100 shadow-xl gap-7">
+            <div className="card  bg-base-100 shadow-xl gap-7">
                 <figure className='h-96'><img className='w-full h-full' src={productDetails.image} alt="Shoes" /></figure>
-                <div class="card-body pt-0">
-                    <h2 class="text-4xl">{productDetails.name}</h2>
+                <div className="card-body pt-0">
+                    <h2 className="text-4xl">{productDetails.name}</h2>
                     <p>{productDetails.description}</p>
                     <p>Minimum Order Quantity: {productDetails.minimumOrderQuantity} </p>
                     <p>Available Quantity: {productDetails.availableQuantity}</p>
@@ -91,7 +91,7 @@ const Purchase = () => {
                 </div>
             </div>
 
-            <div class="card bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl">
                 <form onSubmit={handleSubmit(onSubmit)} className=' flex flex-col justify-center items-center py-5'>
                     <h1 className='text-3xl font-bold text-center mb-9'>Purchase Now</h1>
                     <div className="form-control w-full max-w-xs">

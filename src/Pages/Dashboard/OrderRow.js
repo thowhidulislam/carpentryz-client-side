@@ -15,18 +15,19 @@ const OrderRow = ({ order, index, setCancelingOrder }) => {
             <td>{address}</td>
             <td>{mobileNumber}</td>
             <td>{
-                !paid && <Link to={`/dashboard/payment/${_id}`}><button class="btn btn-xs px-6 btn-primary text-black hover:btn-secondary hover:text-white">Pay</button></Link>
+                !paid && <Link to={`/dashboard/payment/${_id}`}><button className="btn btn-xs px-6 btn-primary text-black hover:btn-secondary hover:text-white">Pay</button></Link>
 
             }
                 {
-                    paid && <p class="btn btn-xs bg-green-500">Paid</p>}
+                    paid && <p className="rounded-lg px-6 bg-green-500 font-bold border-none">Paid</p>
+                }
             </td>
             <td>{
                 !paid &&
-                <label onClick={() => setCancelingOrder(order)} for="cancel-order-confirmation-modal" class="btn modal-button btn btn-xs btn-error text-black hover:btn-secondary hover:text-white">Cancel</label>
+                <label onClick={() => setCancelingOrder(order)} for="cancel-order-confirmation-modal" className="btn modal-button btn btn-xs btn-error text-black hover:btn-secondary hover:text-white">Cancel</label>
             }
                 {paid &&
-                    <button class="btn btn-xs" disabled>Cancel</button>
+                    <button className="btn btn-xs" disabled>Cancel</button>
                 }
             </td>
         </tr>

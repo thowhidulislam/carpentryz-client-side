@@ -50,7 +50,7 @@ const AddProduct = () => {
     return (
         <div>
             <h1 className='text-3xl font-bold text-center my-7'>Add Product</h1>
-            <div class="card max-w-md bg-base-100 shadow-xl mx-auto my-10">
+            <div className="card max-w-md bg-base-100 shadow-xl mx-auto my-10">
                 <form onSubmit={handleSubmit(onSubmit)} className=' flex flex-col justify-center items-center  py-5'>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">

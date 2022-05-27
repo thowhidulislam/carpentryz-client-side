@@ -18,14 +18,14 @@ const Navbar = () => {
         {user && <li><CustomLink to='/dashboard' className="hover:text-[#fab915]">Dashboard</CustomLink></li>}
         {
             user ?
-                <div class="dropdown dropdown-end">
-                    <label tabIndex="0" class="active:bg-transparent">
-                        <div class="w-70 ">
+                <div className="dropdown dropdown-end">
+                    <label tabIndex="0" className="active:bg-transparent">
+                        <div className="w-70 ">
                             <li className='capitalize'><CustomLink to=''>{user.displayName}</CustomLink></li>
                             <p></p>
                         </div>
                     </label>
-                    <ul tabIndex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 w-52">
+                    <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 w-52">
                         <li>
                             <Link to='/' className="justify-between text-black">
                                 Profile
