@@ -49,8 +49,8 @@ const AddProduct = () => {
 
     return (
         <div>
-            <h1 className='text-3xl font-bold text-center my-7'>Add Product</h1>
-            <div className="card max-w-md bg-base-100 shadow-xl mx-auto my-10">
+            <h1 className='text-3xl font-bold text-center my-5'>Add Product</h1>
+            <div className="card max-w-md bg-base-100 shadow-xl mx-auto my-7">
                 <form onSubmit={handleSubmit(onSubmit)} className=' flex flex-col justify-center items-center  py-5'>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
@@ -144,7 +144,7 @@ const AddProduct = () => {
                         </label>
                         <input
                             type="file"
-                            className="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs px-4 py-1.5"
                             {...register('productImage')} />
                     </div>
                     <input className='btn btn-md w-full max-w-xs bg-primary text-black border-0 hover:text-white hover:bg-secondary mt-7 text-xl' type="submit" value='ADD' />
