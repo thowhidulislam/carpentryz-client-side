@@ -23,13 +23,14 @@ const ManageAllOrders = () => {
                 <table class="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>Order Id</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Mobile Number</th>
                             <th>Product Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>

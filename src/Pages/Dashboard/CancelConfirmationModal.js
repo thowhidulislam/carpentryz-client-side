@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React from 'react';
 
-const CancelConfirmationModal = ({ cancelingOrder, setCancelingOrder }) => {
-    const { email } = cancelingOrder
+const CancelConfirmationModal = ({ cancelingOrder, setCancelingOrder, refetch }) => {
+    const { _id } = cancelingOrder
     const handleCancelOrder = () => {
-        axios.delete(`http://localhost:5000/order/${email}`).then(function (response) {
+        axios.delete(`http://localhost:5000/order/user/${_id}`).then(function (response) {
             console.log(response.data)
             if (response.data.result.deletedCount) {
                 setCancelingOrder(null)
+                refetch()
             }
         })
     }
@@ -20,7 +21,7 @@ const CancelConfirmationModal = ({ cancelingOrder, setCancelingOrder }) => {
                     <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
                     <div className="modal-action">
                         <button onClick={handleCancelOrder} className="btn btn-xs btn-primary text-black hover:btn-secondary hover:text-white" >Yes</button>
-                        <label for="cancel-order-confirmation-modal" className="btn">No</label>
+                        <label for="cancel-order-confirmation-modal" className="btn btn-xs btn-primary text-black hover:btn-secondary hover:text-white">No</label>
                     </div>
                 </div>
             </div>

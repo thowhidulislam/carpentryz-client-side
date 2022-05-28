@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading/Loading';
 import SocialLogin from './SocialLogin';
 
@@ -14,11 +15,13 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(user)
     const navigate = useNavigate()
+    console.log(user)
     let errorElement
     useEffect(() => {
         if (user) {
-            navigate('/home')
+            navigate('/dashboard')
         }
     }, [navigate, user])
 

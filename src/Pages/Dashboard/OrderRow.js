@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const OrderRow = ({ order, index, setCancelingOrder }) => {
+const OrderRow = ({ order, index, setCancelingOrder, refetch }) => {
     const { name, email, quantity, address, price, mobileNumber, paid, _id, productName, transactionId } = order
 
     return (

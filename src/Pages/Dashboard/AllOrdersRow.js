@@ -15,7 +15,6 @@ const AllOrdersRow = ({ allOrder, index, refetch, setDeleteOrder }) => {
     }
     return (
         <tr>
-            <th></th>
             <td>{allOrder?._id}</td>
             <td>{allOrder?.name}</td>
             <td>{allOrder?.email}</td>

@@ -22,7 +22,7 @@ const ProfileDetails = () => {
             address: data.address,
             linkedIn: data.linkedIn,
         }
-        axios.put(`http://localhost:5000/user/${user?.email}`, infos).then(function (response) {
+        axios.put(`http://localhost:5000/user/profile/${user?.email}`, infos).then(function (response) {
             console.log(response.data)
             if (response.data.success) {
                 toast('Your information is successfully updated. ')

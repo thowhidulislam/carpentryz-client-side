@@ -19,10 +19,10 @@ const Dashboard = () => {
                     <li><Link to='/dashboard'>My Profile</Link></li>
                     {
                         // admin ||
-                        // <>
-                        <li><Link to='/dashboard/myOrder'>My Orders</Link></li>
-                        // <li><Link to='/dashboard/addReview'>Add A Review</Link></li>
-                        // </>
+                        <>
+                            <li><Link to='/dashboard/myOrder'>My Orders</Link></li>
+                            <li><Link to='/dashboard/addReview'>Add A Review</Link></li>
+                        </>
                     }
                     <li><Link to='/dashboard/addProduct'>Add A Product</Link></li>
                     <li><Link to='/dashboard/manageProducts'>Manage Products</Link></li>

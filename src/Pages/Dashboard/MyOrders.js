@@ -46,6 +46,7 @@ const MyOrders = () => {
                                 order={order}
                                 index={index}
                                 setCancelingOrder={setCancelingOrder}
+                                refetch={refetch}
                             ></OrderRow>)
                         }
                     </tbody>
@@ -55,6 +56,7 @@ const MyOrders = () => {
                 cancelingOrder && <CancelConfirmationModal
                     cancelingOrder={cancelingOrder}
                     setCancelingOrder={setCancelingOrder}
+                    refetch={refetch}
                 ></CancelConfirmationModal>
             }
         </div>

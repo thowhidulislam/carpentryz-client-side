@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import SocialLogin from './SocialLogin';
+import useToken from '../../hooks/useToken';
 
 const CreateAccount = () => {
     const navigate = useNavigate()
@@ -16,6 +17,7 @@ const CreateAccount = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth)
+    const [token] = useToken(user)
     let errorElement
 
     useEffect(() => {

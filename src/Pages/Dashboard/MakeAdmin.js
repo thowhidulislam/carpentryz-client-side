@@ -7,8 +7,8 @@ import UserRow from './UserRow';
 
 const MakeAdmin = () => {
     const [user] = useAuthState(auth)
-    const { data: allUsers, isLoading, refetch } = useQuery('userForAdmin', () => fetch('http://localhost:5000/user').then(res => res.json()))
-    console.log(allUsers?.allUsers)
+    const { data, isLoading, refetch } = useQuery('userForAdmin', () => fetch('http://localhost:5000/admin/allUsers').then(res => res.json()))
+    console.log(data)
     useEffect(() => {
         if (user) {
             refetch()
@@ -32,10 +32,11 @@ const MakeAdmin = () => {
                 </thead>
                 <tbody>
                     {
-                        allUsers?.allUsers.map((user, index) => <UserRow
+                        data.result.map((user, index) => <UserRow
                             key={user._id}
                             user={user}
                             index={index}
+                            refetch={refetch}
                         ></UserRow>)
                     }
                 </tbody>
