@@ -25,7 +25,7 @@ const OrderRow = ({ order, index, setCancelingOrder, refetch }) => {
             </td>
             <td>{
                 !paid &&
-                <label onClick={() => setCancelingOrder(order)} for="cancel-order-confirmation-modal" className="btn modal-button btn btn-xs btn-error text-black hover:btn-secondary hover:text-white">Cancel</label>
+                <label onClick={() => setCancelingOrder(order)} for="cancel-order-confirmation-modal" className="btn modal-button btn-xs btn-error text-black hover:btn-secondary hover:text-white">Cancel</label>
             }
                 {paid &&
                     <button className="btn btn-xs" disabled>Cancel</button>
