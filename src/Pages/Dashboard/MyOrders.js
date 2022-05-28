@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../firebase.init';
@@ -10,9 +10,11 @@ const MyOrders = () => {
     const [user, loading, error] = useAuthState(auth);
     const [cancelingOrder, setCancelingOrder] = useState(null)
     const { data: orders, isLoading, queryError, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?email=${user?.email}`).then(res => res.json()))
-    if (user) {
-        refetch()
-    }
+    useEffect(() => {
+        if (user) {
+            refetch()
+        }
+    }, [user, refetch])
     if (isLoading) {
         return <Loading></Loading>
     }

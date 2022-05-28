@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const CheckoutForm = ({ orders }) => {
     const stripe = useStripe()
@@ -66,6 +67,7 @@ const CheckoutForm = ({ orders }) => {
             setCardError('')
             setTransactionId(paymentIntent.id)
             setSuccess('Congrats! Your Payment is completed.')
+            toast.success('Your payment is successfully received.')
             const payment = {
                 order: _id,
                 transactionId: paymentIntent.id
