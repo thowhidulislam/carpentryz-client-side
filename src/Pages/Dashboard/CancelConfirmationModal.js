@@ -19,8 +19,8 @@ const CancelConfirmationModal = ({ cancelingOrder, setCancelingOrder }) => {
                     <h3 className="font-bold text-lg">Congratulations random Interner user!</h3>
                     <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
                     <div className="modal-action">
-                        <button onClick={handleCancelOrder} className="btn btn-xs btn-primary text-black hover:btn-secondary hover:text-white" >Confirm</button>
-                        <label for="cancel-order-confirmation-modal" className="btn">Yay!</label>
+                        <button onClick={handleCancelOrder} className="btn btn-xs btn-primary text-black hover:btn-secondary hover:text-white" >Yes</button>
+                        <label for="cancel-order-confirmation-modal" className="btn">No</label>
                     </div>
                 </div>
             </div>
