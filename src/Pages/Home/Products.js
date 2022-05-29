@@ -16,7 +16,7 @@ const Products = () => {
     }, [])
     return (
         <div className='sm:px-4 lg:px-24 my-12'>
-            <h1 className='text-4xl font-bold text-center'>Featured Products:{products.length}</h1>
+            <h1 className='text-4xl font-bold text-center'>Featured Products</h1>
             <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-6'>
                 {
                     products.map(product => <Product
