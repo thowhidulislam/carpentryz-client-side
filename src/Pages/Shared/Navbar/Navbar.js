@@ -7,9 +7,13 @@ import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
+import Loading from '../Loading/Loading';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    if (loading) {
+        return <Loading></Loading>
+    }
     const logOut = () => {
         signOut(auth)
     }
@@ -22,7 +26,7 @@ const Navbar = () => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex="0" className="active:bg-transparent">
                         <div className="w-70 ">
-                            <li className='capitalize'><CustomLink to=''>{user.displayName}</CustomLink></li>
+                            <li className='capitalize'><CustomLink to=''>{user?.displayName}</CustomLink></li>
                             <p></p>
                         </div>
                     </label>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const UserRow = ({ user, index, refetch }) => {
-    const { name, email, mobileNumber, role } = user
+    const { name, email, mobileNumber, role, address } = user
 
     const makeAdmin = () => {
         axios.put(`http://localhost:5000/user/admin/${email}`).then(function (response) {
