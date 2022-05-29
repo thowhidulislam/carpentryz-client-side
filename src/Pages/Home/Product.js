@@ -5,8 +5,8 @@ const Product = ({ product }) => {
     const { name, description, minimumOrderQuantity, availableQuantity, price, _id, image } = product
 
     return (
-        <div className="card max-w-md bg-base-100 shadow-xl my-10">
-            <figure className='h-96'><img src={image} alt="Shoes" className='h-full w-full' /></figure>
+        <div className="card lg:max-w-md bg-base-100 shadow-xl my-10">
+            <figure className='h-96'><img src={image} alt="Shoes" className='w-96 h-full w-full' /></figure>
 
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>

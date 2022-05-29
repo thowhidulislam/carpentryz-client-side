@@ -10,9 +10,9 @@ const Reviews = () => {
         return <Loading></Loading>
     }
     return (
-        <div className=' px-24'>
+        <div className='lg:px-24'>
             <h1 className='text-4xl font-bold text-center '>Reviews</h1>
-            <div className='grid grid-cols-3 gap-6 my-6'>
+            <div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-6 my-6'>
                 {
                     homeReviews.result.map(review => <Review
                         key={review._id}

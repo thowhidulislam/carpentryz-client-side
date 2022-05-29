@@ -15,6 +15,7 @@ const Navbar = () => {
     }
     const menuItems = <>
         <li><CustomLink to='/home' >Home</CustomLink></li>
+        <li><CustomLink to='/contact' >Contact us</CustomLink></li>
         {user && <li><CustomLink to='/dashboard' className="hover:text-[#fab915]">Dashboard</CustomLink></li>}
         {
             user ?
@@ -36,7 +37,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 :
-                <li title='login'><Link to='/login' className='active:bg-transparent'><FontAwesomeIcon icon={faRightToBracket} className="text-white btn btn-ghost btn-xs" /></Link></li>
+                <li title='login'><Link to='/login' className='active:bg-transparent  '><FontAwesomeIcon icon={faRightToBracket} className="text-white btn btn-ghost btn-xs" /></Link></li>
         }
     </>
     return (
@@ -46,7 +47,7 @@ const Navbar = () => {
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
                         {menuItems}
                     </ul>
                 </div>

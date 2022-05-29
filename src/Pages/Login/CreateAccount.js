@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
@@ -18,13 +18,16 @@ const CreateAccount = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth)
     const [token] = useToken(user)
+    const location = useLocation()
     let errorElement
 
+    let from = location.state?.from?.pathname || "/"
+
     useEffect(() => {
-        if (user) {
-            navigate('/home')
+        if (token) {
+            navigate(from, { replace: true })
         }
-    }, [user, navigate])
+    }, [token, navigate, from])
 
     if (error || updateError) {
         errorElement = <>
