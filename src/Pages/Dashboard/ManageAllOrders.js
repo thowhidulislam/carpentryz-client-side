@@ -10,7 +10,11 @@ import DeleteConfirmationModal from './DeleteConfirmationModal';
 const ManageAllOrders = () => {
     const [user] = useAuthState(auth)
     const [deleteOrder, setDeleteOrder] = useState([])
-    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/allOrders').then(res => res.json()))
+    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/allOrders', {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>

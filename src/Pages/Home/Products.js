@@ -5,7 +5,11 @@ import Product from '../Home/Product';
 const Products = () => {
     const [products, setProducts] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:5000/products').then(function (response) {
+        axios.get('http://localhost:5000/products', {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(function (response) {
             console.log(response)
             setProducts(response.data.products)
         })

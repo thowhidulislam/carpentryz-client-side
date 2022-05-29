@@ -18,7 +18,9 @@ const Purchase = () => {
         fetch(`http://localhost:5000/products/${id}`, {
             method: 'GET',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+
             }
         })
             .then(res => res.json())
@@ -65,9 +67,17 @@ const Purchase = () => {
         const previousQuantity = productDetails.availableQuantity
         const newQuantity = previousQuantity - quantity
         console.log(orderDetails, newQuantity)
-        axios.patch(`http://localhost:5000/products/${id}`, { newQuantity }).then(function (response) {
+        axios.patch(`http://localhost:5000/products/${id}`, { newQuantity }, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(function (response) {
             console.log(response)
-            axios.get(`http://localhost:5000/products/${id}`).then(function (response) {
+            axios.get(`http://localhost:5000/products/${id}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            }).then(function (response) {
                 console.log(response.data)
                 setProductDetails(response.data.result)
                 reset()

@@ -4,7 +4,11 @@ import Loading from '../Shared/Loading/Loading';
 import Review from './Review';
 
 const Reviews = () => {
-    const { data: homeReviews, isLoading } = useQuery('homeReviews', () => fetch('http://localhost:5000/review').then(res => res.json()))
+    const { data: homeReviews, isLoading } = useQuery('homeReviews', () => fetch('http://localhost:5000/review', {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
     console.log(homeReviews)
     if (isLoading) {
         return <Loading></Loading>

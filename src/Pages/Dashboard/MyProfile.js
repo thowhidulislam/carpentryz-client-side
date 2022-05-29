@@ -11,7 +11,11 @@ const MyProfile = () => {
     const [userInformation, setUserInformation] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/user/${user?.email}`).then(function (response) {
+        axios.get(`http://localhost:5000/user/${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(function (response) {
             setUserInformation(response.data.result)
             console.log(response)
         })

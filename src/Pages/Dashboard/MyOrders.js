@@ -9,7 +9,11 @@ import OrderRow from './OrderRow';
 const MyOrders = () => {
     const [user, loading, error] = useAuthState(auth);
     const [cancelingOrder, setCancelingOrder] = useState(null)
-    const { data: orders, isLoading, queryError, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?email=${user?.email}`).then(res => res.json()))
+    const { data: orders, isLoading, queryError, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?email=${user?.email}`, {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
     useEffect(() => {
         if (user) {
             refetch()

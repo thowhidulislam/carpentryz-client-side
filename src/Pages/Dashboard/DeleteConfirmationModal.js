@@ -4,7 +4,11 @@ import React from 'react';
 const DeleteConfirmationModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
     const { _id } = deleteOrder
     const handleDeleteOrder = () => {
-        axios.delete(`http://localhost:5000/order/admin/${_id}`).then(function (response) {
+        axios.delete(`http://localhost:5000/order/admin/${_id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(function (response) {
             console.log(response.data)
             setDeleteOrder(null)
             refetch()

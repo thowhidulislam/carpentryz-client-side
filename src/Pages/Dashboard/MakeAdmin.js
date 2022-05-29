@@ -7,7 +7,11 @@ import UserRow from './UserRow';
 
 const MakeAdmin = () => {
     const [user] = useAuthState(auth)
-    const { data, isLoading, refetch } = useQuery('userForAdmin', () => fetch('http://localhost:5000/admin/allUsers').then(res => res.json()))
+    const { data, isLoading, refetch } = useQuery('userForAdmin', () => fetch('http://localhost:5000/admin/allUsers', {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
     console.log(data)
     useEffect(() => {
         if (user) {

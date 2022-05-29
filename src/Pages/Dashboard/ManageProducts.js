@@ -5,7 +5,11 @@ import ManageProduct from './ManageProduct';
 import ProductDeleteModal from './ProductDeleteModal';
 
 const ManageProducts = () => {
-    const { data: productList, isLoading, refetch } = useQuery('manageAllProducts', () => fetch('http://localhost:5000/allProducts').then(res => res.json()))
+    const { data: productList, isLoading, refetch } = useQuery('manageAllProducts', () => fetch('http://localhost:5000/allProducts', {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
     console.log(productList?.result)
     const [deletingProduct, setDeletingProduct] = useState([])
     if (isLoading) {

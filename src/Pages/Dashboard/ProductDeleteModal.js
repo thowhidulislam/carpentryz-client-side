@@ -4,7 +4,11 @@ import React from 'react';
 const ProductDeleteModal = ({ deletingProduct, setDeletingProduct, refetch }) => {
     const { _id } = deletingProduct
     const handleDeleteProduct = () => {
-        axios.delete(`http://localhost:5000/deleteProducts/${_id}`).then(function (response) {
+        axios.delete(`http://localhost:5000/deleteProducts/${_id}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(function (response) {
             console.log(response.data)
             setDeletingProduct(null)
             refetch()

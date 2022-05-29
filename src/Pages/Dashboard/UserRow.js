@@ -2,17 +2,25 @@ import axios from 'axios';
 import React from 'react';
 
 const UserRow = ({ user, index, refetch }) => {
-    const { name, email, mobileNumber, role, address } = user
+    const { name, email, mobileNumber, role } = user
 
     const makeAdmin = () => {
-        axios.put(`http://localhost:5000/user/admin/${email}`).then(function (response) {
+        axios.put(`http://localhost:5000/user/admin/${email}`, user, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(function (response) {
             console.log(response)
             refetch()
         })
     }
 
     const removeUser = () => {
-        axios.delete(`http://localhost:5000/admin/delete/${email}`).then(function (response) {
+        axios.delete(`http://localhost:5000/admin/delete/${email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(function (response) {
             console.log(response)
             refetch()
         })
