@@ -20,6 +20,7 @@ import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Contactus from './Pages/Home/Contactus';
 import NotFound from './Pages/NotFound/NotFound';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import Blogs from './Pages/Blogs/Blogs';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='register' element={<CreateAccount></CreateAccount>}></Route>
         <Route path='contact' element={<Contactus></Contactus>}></Route>
         <Route path='portfolio' element={<MyPortfolio></MyPortfolio>}></Route>
+        <Route path='blogs' element={<Blogs></Blogs>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>

@@ -22,6 +22,7 @@ const Navbar = () => {
         <li><CustomLink to='/contact' >Contact us</CustomLink></li>
         {user && <li><CustomLink to='/dashboard' className="hover:text-[#fab915]">Dashboard</CustomLink></li>}
         <li><CustomLink to='/portfolio'>My Portfolio</CustomLink></li>
+        <li><CustomLink to='/blogs'>Blogs</CustomLink></li>
         {
             user ?
                 <div className="dropdown dropdown-end">
