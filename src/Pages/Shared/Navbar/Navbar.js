@@ -33,12 +33,6 @@ const Navbar = () => {
                         </div>
                     </label>
                     <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 w-52">
-                        <li>
-                            <Link to='/' className="justify-between text-black">
-                                Profile
-                            </Link>
-                        </li>
-                        <li><Link to='/' className='text-black'>Settings</Link></li>
                         <li><button onClick={logOut} className='text-black'>Logout</button></li>
                     </ul>
                 </div>
@@ -59,10 +53,17 @@ const Navbar = () => {
                 </div>
                 <a className="btn btn-ghost uppercase text-2xl">Carpentryz</a>
             </div>
-            <div className="navbar-end hidden lg:flex">
+            <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 ">
                     {menuItems}
                 </ul>
+            </div>
+            <div className='navbar-end'>
+
+                <label tabIndex="1" htmlFor="dashboard-sidebar" className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
+
             </div>
         </div>
     );

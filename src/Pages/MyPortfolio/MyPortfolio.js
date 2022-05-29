@@ -17,8 +17,8 @@ const MyPortfolio = () => {
                     </div>
                 </div>
                 <div class="card-body items-center text-center">
-                    <h2 class="text-6xl font-bold">Md Thowhidul Islam Molla</h2>
-                    <p className='text-2xl'>Email: thowhidpro@gmail.com</p>
+                    <h2 class="lg:text-6xl font-bold sm:text-xl">Md Thowhidul Islam Molla</h2>
+                    <p className='lg:text-2xl sm:text-lg'>Email: thowhidpro@gmail.com</p>
                     <div>
                         <h1 className='text-xl my-7 font-bold'>Educational Qualification</h1>
                         <div className='grid lg:grid-cols-2 gap-6'>
