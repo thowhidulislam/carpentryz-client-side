@@ -13,7 +13,6 @@ const Clients = () => {
                     <figure class="px-10 pt-10 pb-10">
                         <img src={brand1} alt="Shoes" class="rounded-xl" />
                     </figure>
-
                 </div>
                 <div class="card max-w-xs bg-base-100 shadow-xl">
                     <figure class="px-10 pt-10 pb-10">
