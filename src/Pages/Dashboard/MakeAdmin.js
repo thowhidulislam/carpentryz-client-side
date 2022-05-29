@@ -7,7 +7,7 @@ import UserRow from './UserRow';
 
 const MakeAdmin = () => {
     const [user] = useAuthState(auth)
-    const { data, isLoading, refetch } = useQuery('userForAdmin', () => fetch('http://localhost:5000/admin/allUsers', {
+    const { data, isLoading, refetch } = useQuery('userForAdmin', () => fetch('https://aqueous-lake-49311.herokuapp.com/admin/allUsers', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

@@ -4,12 +4,12 @@ import React from 'react';
 const AllOrdersRow = ({ allOrder, index, refetch, setDeleteOrder }) => {
     const { _id } = allOrder
     const handlePaid = async (id) => {
-        await axios.patch(`http://localhost:5000/order/admin/paid/${id}`).then(function (response) {
+        await axios.patch(`https://aqueous-lake-49311.herokuapp.com/order/admin/paid/${id}`).then(function (response) {
             refetch()
         })
     }
     const handleShipped = async (id) => {
-        await axios.patch(`http://localhost:5000/order/admin/shipped/${id}`).then(function (response) {
+        await axios.patch(`https://aqueous-lake-49311.herokuapp.com/order/admin/shipped/${id}`).then(function (response) {
             refetch()
         })
     }

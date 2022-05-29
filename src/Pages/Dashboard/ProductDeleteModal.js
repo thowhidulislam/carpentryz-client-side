@@ -4,7 +4,7 @@ import React from 'react';
 const ProductDeleteModal = ({ deletingProduct, setDeletingProduct, refetch }) => {
     const { _id } = deletingProduct
     const handleDeleteProduct = () => {
-        axios.delete(`http://localhost:5000/deleteProducts/${_id}`, {
+        axios.delete(`https://aqueous-lake-49311.herokuapp.com/deleteProducts/${_id}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }

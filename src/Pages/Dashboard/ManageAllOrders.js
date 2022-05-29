@@ -10,7 +10,7 @@ import DeleteConfirmationModal from './DeleteConfirmationModal';
 const ManageAllOrders = () => {
     const [user] = useAuthState(auth)
     const [deleteOrder, setDeleteOrder] = useState([])
-    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('http://localhost:5000/allOrders', {
+    const { data: allOrders, isLoading, refetch } = useQuery('allOrders', () => fetch('https://aqueous-lake-49311.herokuapp.com/allOrders', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

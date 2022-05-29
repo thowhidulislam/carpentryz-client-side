@@ -13,7 +13,7 @@ const stripePromise = loadStripe('pk_test_51L1nntExcvpjzmWWjvf1DEBBq2JQb6z9hse9j
 const Payment = () => {
     const [user] = useAuthState(auth)
     const { id } = useParams()
-    const { data: orders, isLoading, refetch } = useQuery(['orderPayment', id], () => fetch(`http://localhost:5000/order/${id}`).then(res => res.json()))
+    const { data: orders, isLoading, refetch } = useQuery(['orderPayment', id], () => fetch(`https://aqueous-lake-49311.herokuapp.com/order/${id}`).then(res => res.json()))
 
     useEffect(() => {
         if (user) {

@@ -8,7 +8,7 @@ const useAdmin = (user) => {
     useEffect(() => {
         const email = user?.email
         if (email) {
-            axios.get(`http://localhost:5000/admin/${email}`, {
+            axios.get(`https://aqueous-lake-49311.herokuapp.com/admin/${email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }

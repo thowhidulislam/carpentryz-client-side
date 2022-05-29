@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading/Loading';
 import Review from './Review';
 
 const Reviews = () => {
-    const { data: homeReviews, isLoading } = useQuery('homeReviews', () => fetch('http://localhost:5000/review', {
+    const { data: homeReviews, isLoading } = useQuery('homeReviews', () => fetch('https://aqueous-lake-49311.herokuapp.com/review', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

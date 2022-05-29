@@ -5,7 +5,7 @@ const UserRow = ({ user, index, refetch }) => {
     const { name, email, mobileNumber, role } = user
 
     const makeAdmin = () => {
-        axios.put(`http://localhost:5000/user/admin/${email}`, user, {
+        axios.put(`https://aqueous-lake-49311.herokuapp.com/user/admin/${email}`, user, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -16,7 +16,7 @@ const UserRow = ({ user, index, refetch }) => {
     }
 
     const removeUser = () => {
-        axios.delete(`http://localhost:5000/admin/delete/${email}`, {
+        axios.delete(`https://aqueous-lake-49311.herokuapp.com/admin/delete/${email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }

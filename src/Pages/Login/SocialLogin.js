@@ -26,7 +26,10 @@ const SocialLogin = () => {
         return <Loading></Loading>
     }
     return (
-        <button className="btn btn-outline text-black hover:bg-secondary hover:text-white" onClick={() => signInWithGoogle()}>Continue with Google</button>
+        <>
+            <button className="btn btn-outline text-black hover:bg-secondary hover:text-white" onClick={() => signInWithGoogle()}>Continue with Google</button>
+            {errorElement}
+        </>
     );
 };
 

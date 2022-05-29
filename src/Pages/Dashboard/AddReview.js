@@ -16,7 +16,7 @@ const AddReview = () => {
         setMessage(event.target.value)
     }
     const handleReviewButton = () => {
-        axios.post('http://localhost:5000/review', { message, rating, user }).then(function (response) {
+        axios.post('https://aqueous-lake-49311.herokuapp.com/review', { message, rating, user }).then(function (response) {
             if (response.data.result.insertedId) {
                 toast("Thanks for your review.")
             }

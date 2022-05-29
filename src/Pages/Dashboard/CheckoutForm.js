@@ -14,7 +14,7 @@ const CheckoutForm = ({ orders }) => {
     const { _id, price, name, email } = orders.result
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://aqueous-lake-49311.herokuapp.com/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ price }),
@@ -73,7 +73,7 @@ const CheckoutForm = ({ orders }) => {
                 transactionId: paymentIntent.id
             }
 
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://aqueous-lake-49311.herokuapp.com/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

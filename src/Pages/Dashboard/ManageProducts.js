@@ -5,7 +5,7 @@ import ManageProduct from './ManageProduct';
 import ProductDeleteModal from './ProductDeleteModal';
 
 const ManageProducts = () => {
-    const { data: productList, isLoading, refetch } = useQuery('manageAllProducts', () => fetch('http://localhost:5000/allProducts', {
+    const { data: productList, isLoading, refetch } = useQuery('manageAllProducts', () => fetch('https://aqueous-lake-49311.herokuapp.com/allProducts', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

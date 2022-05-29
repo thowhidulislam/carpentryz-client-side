@@ -15,7 +15,7 @@ const Purchase = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://aqueous-lake-49311.herokuapp.com/products/${id}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -53,7 +53,7 @@ const Purchase = () => {
             mobileNumber: orderDetails.mobileNumber,
 
         }
-        axios.post('http://localhost:5000/order', order).then(function (response) {
+        axios.post('https://aqueous-lake-49311.herokuapp.com/order', order).then(function (response) {
             console.log(response)
             if (response.data.result.insertedId) {
                 toast.success('Order is received successfully')
@@ -67,13 +67,13 @@ const Purchase = () => {
         const previousQuantity = productDetails.availableQuantity
         const newQuantity = previousQuantity - quantity
         console.log(orderDetails, newQuantity)
-        axios.patch(`http://localhost:5000/products/${id}`, { newQuantity }, {
+        axios.patch(`https://aqueous-lake-49311.herokuapp.com/products/${id}`, { newQuantity }, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         }).then(function (response) {
             console.log(response)
-            axios.get(`http://localhost:5000/products/${id}`, {
+            axios.get(`https://aqueous-lake-49311.herokuapp.com/products/${id}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }

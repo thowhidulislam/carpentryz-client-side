@@ -31,7 +31,7 @@ const AddProduct = () => {
                         price: productData?.price,
                         image: image
                     }
-                    axios.post('http://localhost:5000/products', product, {
+                    axios.post('https://aqueous-lake-49311.herokuapp.com/products', product, {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('accessToken')}`
                         }

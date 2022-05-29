@@ -4,7 +4,7 @@ import React from 'react';
 const CancelConfirmationModal = ({ cancelingOrder, setCancelingOrder, refetch }) => {
     const { _id } = cancelingOrder
     const handleCancelOrder = () => {
-        axios.delete(`http://localhost:5000/order/user/${_id}`).then(function (response) {
+        axios.delete(`https://aqueous-lake-49311.herokuapp.com/order/user/${_id}`).then(function (response) {
             console.log(response.data)
             if (response.data.result.deletedCount) {
                 setCancelingOrder(null)

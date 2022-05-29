@@ -5,7 +5,7 @@ import Product from '../Home/Product';
 const Products = () => {
     const [products, setProducts] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:5000/products', {
+        axios.get('https://aqueous-lake-49311.herokuapp.com/products', {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }

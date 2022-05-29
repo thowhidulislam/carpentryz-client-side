@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const Contactus = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/contact', data).then(function (response) {
+        axios.post('https://aqueous-lake-49311.herokuapp.com/contact', data).then(function (response) {
             console.log(response.data.success.insertedId)
             if (response.data.success.insertedId) {
                 toast.success('Thank you!! We have received your message.')
