@@ -18,6 +18,7 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Contactus from './Pages/Home/Contactus';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='register' element={<CreateAccount></CreateAccount>}></Route>
         <Route path='contact' element={<Contactus></Contactus>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>
