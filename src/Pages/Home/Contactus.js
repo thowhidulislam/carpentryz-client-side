@@ -14,10 +14,11 @@ const Contactus = () => {
         })
     }
     return (
-        <div className='mx-24 my-12'>
+        <div className='mx-auto my-12 w-2/4 '>
             <h1 className='text-4xl text-center font-bold my-12'>Drop us message</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='grid sm:grid-cols-1 lg:grid-cols-3 justify-items-center'>
+                <div className='grid sm:grid-cols-1 lg:grid-cols-3 
+                gap-3 justify-items-center'>
                     <div class="form-control w-full max-w-xs">
                         <input
                             type="text"
