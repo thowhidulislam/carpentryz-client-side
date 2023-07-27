@@ -80,7 +80,7 @@ const MyPortfolio = () => {
             <h1 className="text-xl font-bold text-center my-7">
               Projects I have done
             </h1>
-            <div className="grid lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
               <div class="card max-w-xs bg-base-100 shadow-xl">
                 <div class="card-body">
                   <a
@@ -108,6 +108,16 @@ const MyPortfolio = () => {
                     href="https://reynolds-trainer.web.app/"
                   >
                     Reynolds
+                  </a>
+                </div>
+              </div>
+              <div class="card max-w-xs bg-base-100 shadow-xl">
+                <div class="card-body">
+                  <a
+                    class="text-center text-xl font-bold"
+                    href="https://bookshelf-frontend-thowhid.netlify.app/"
+                  >
+                    Bookshelf
                   </a>
                 </div>
               </div>
