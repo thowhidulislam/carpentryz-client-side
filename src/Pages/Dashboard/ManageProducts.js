@@ -10,7 +10,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("manageAllProducts", () =>
-    fetch("https://carpentryz-server-side.vercel.app/allProducts", {
+    fetch("https://carpentryz-server.onrender.com/allProducts", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

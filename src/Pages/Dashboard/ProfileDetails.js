@@ -29,7 +29,7 @@ const ProfileDetails = () => {
     };
     axios
       .put(
-        `https://carpentryz-server-side.vercel.app/user/profile/${user?.email}`,
+        `https://carpentryz-server.onrender.com/user/profile/${user?.email}`,
         infos
       )
       .then(function (response) {

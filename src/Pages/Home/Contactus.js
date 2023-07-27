@@ -11,7 +11,7 @@ const Contactus = () => {
   } = useForm();
   const onSubmit = (data) => {
     axios
-      .post("https://carpentryz-server-side.vercel.app/contact", data)
+      .post("https://carpentryz-server.onrender.com/contact", data)
       .then(function (response) {
         console.log(response.data.success.insertedId);
         if (response.data.success.insertedId) {

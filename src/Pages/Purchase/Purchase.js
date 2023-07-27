@@ -23,7 +23,7 @@ const Purchase = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://carpentryz-server-side.vercel.app/products/${id}`, {
+    fetch(`https://carpentryz-server.onrender.com/products/${id}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -59,7 +59,7 @@ const Purchase = () => {
       mobileNumber: orderDetails.mobileNumber,
     };
     axios
-      .post("https://carpentryz-server-side.vercel.app/order", order)
+      .post("https://carpentryz-server.onrender.com/order", order)
       .then(function (response) {
         console.log(response);
         if (response.data.result.insertedId) {
@@ -74,7 +74,7 @@ const Purchase = () => {
     console.log(orderDetails, newQuantity);
     axios
       .patch(
-        `https://carpentryz-server-side.vercel.app/products/${id}`,
+        `https://carpentryz-server.onrender.com/products/${id}`,
         { newQuantity },
         {
           headers: {
@@ -85,7 +85,7 @@ const Purchase = () => {
       .then(function (response) {
         console.log(response);
         axios
-          .get(`https://carpentryz-server-side.vercel.app/products/${id}`, {
+          .get(`https://carpentryz-server.onrender.com/products/${id}`, {
             headers: {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },

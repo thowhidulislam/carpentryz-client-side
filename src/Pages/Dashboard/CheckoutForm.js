@@ -14,7 +14,7 @@ const CheckoutForm = ({ orders }) => {
   const { _id, price, name, email } = orders.result;
 
   useEffect(() => {
-    fetch("https://carpentryz-server-side.vercel.app/create-payment-intent", {
+    fetch("https://carpentryz-server.onrender.com/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ price }),
@@ -70,7 +70,7 @@ const CheckoutForm = ({ orders }) => {
         transactionId: paymentIntent.id,
       };
 
-      fetch(`https://carpentryz-server-side.vercel.app/order/${_id}`, {
+      fetch(`https://carpentryz-server.onrender.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

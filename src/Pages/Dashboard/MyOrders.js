@@ -15,14 +15,11 @@ const MyOrders = () => {
     queryError,
     refetch,
   } = useQuery("orders", () =>
-    fetch(
-      `https://carpentryz-server-side.vercel.app/order?email=${user?.email}`,
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    ).then((res) => res.json())
+    fetch(`https://carpentryz-server.onrender.com/order?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   useEffect(() => {
     if (user) {

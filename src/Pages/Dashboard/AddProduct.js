@@ -36,17 +36,11 @@ const AddProduct = () => {
             image: image,
           };
           axios
-            .post(
-              "https://carpentryz-server-side.vercel.app/products",
-              product,
-              {
-                headers: {
-                  authorization: `Bearer ${localStorage.getItem(
-                    "accessToken"
-                  )}`,
-                },
-              }
-            )
+            .post("https://carpentryz-server.onrender.com/products", product, {
+              headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+            })
             .then(function (response) {
               const { data } = response;
               if (data.result.insertedId) {

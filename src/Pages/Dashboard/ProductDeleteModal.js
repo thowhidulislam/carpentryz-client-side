@@ -9,14 +9,11 @@ const ProductDeleteModal = ({
   const { _id } = deletingProduct;
   const handleDeleteProduct = () => {
     axios
-      .delete(
-        `https://carpentryz-server-side.vercel.app/deleteProducts/${_id}`,
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      .delete(`https://carpentryz-server.onrender.com/deleteProducts/${_id}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
       .then(function (response) {
         console.log(response.data);
         setDeletingProduct(null);

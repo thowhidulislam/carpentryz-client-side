@@ -5,7 +5,7 @@ import Loading from "../Shared/Loading/Loading";
 
 const Products = () => {
   const { data, isLoading } = useQuery("featureProducts", () =>
-    fetch("https://carpentryz-server-side.vercel.app/products").then((res) =>
+    fetch("https://carpentryz-server.onrender.com/products").then((res) =>
       res.json()
     )
   );

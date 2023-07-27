@@ -20,7 +20,7 @@ const Payment = () => {
     isLoading,
     refetch,
   } = useQuery(["orderPayment", id], () =>
-    fetch(`https://carpentryz-server-side.vercel.app/order/${id}`).then((res) =>
+    fetch(`https://carpentryz-server.onrender.com/order/${id}`).then((res) =>
       res.json()
     )
   );

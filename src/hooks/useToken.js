@@ -6,7 +6,7 @@ const useToken = (user) => {
     const email = user?.user?.email;
     const currentUser = { email: email };
     if (email) {
-      fetch(`https://carpentryz-server-side.vercel.app/user/create/${email}`, {
+      fetch(`https://carpentryz-server.onrender.com/user/create/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

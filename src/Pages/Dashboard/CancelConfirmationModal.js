@@ -9,7 +9,7 @@ const CancelConfirmationModal = ({
   const { _id } = cancelingOrder;
   const handleCancelOrder = () => {
     axios
-      .delete(`https://carpentryz-server-side.vercel.app/order/user/${_id}`)
+      .delete(`https://carpentryz-server.onrender.com/order/user/${_id}`)
       .then(function (response) {
         console.log(response.data);
         if (response.data.result.deletedCount) {

@@ -11,7 +11,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     axios
-      .get(`https://carpentryz-server-side.vercel.app/user/${user?.email}`, {
+      .get(`https://carpentryz-server.onrender.com/user/${user?.email}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },

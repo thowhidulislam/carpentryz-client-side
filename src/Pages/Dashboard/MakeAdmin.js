@@ -8,7 +8,7 @@ import UserRow from "./UserRow";
 const MakeAdmin = () => {
   const [user] = useAuthState(auth);
   const { data, isLoading, refetch } = useQuery("userForAdmin", () =>
-    fetch("https://carpentryz-server-side.vercel.app/admin/allUsers", {
+    fetch("https://carpentryz-server.onrender.com/admin/allUsers", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

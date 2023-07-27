@@ -6,15 +6,11 @@ const UserRow = ({ user, index, refetch }) => {
 
   const makeAdmin = () => {
     axios
-      .put(
-        `https://carpentryz-server-side.vercel.app/user/admin/${email}`,
-        user,
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      .put(`https://carpentryz-server.onrender.com/user/admin/${email}`, user, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
       .then(function (response) {
         console.log(response);
         refetch();
@@ -23,14 +19,11 @@ const UserRow = ({ user, index, refetch }) => {
 
   const removeUser = () => {
     axios
-      .delete(
-        `https://carpentryz-server-side.vercel.app/admin/delete/${email}`,
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      .delete(`https://carpentryz-server.onrender.com/admin/delete/${email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
       .then(function (response) {
         console.log(response);
         refetch();

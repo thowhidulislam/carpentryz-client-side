@@ -17,7 +17,7 @@ const AddReview = () => {
   };
   const handleReviewButton = () => {
     axios
-      .post("https://carpentryz-server-side.vercel.app/review", {
+      .post("https://carpentryz-server.onrender.com/review", {
         message,
         rating,
         user,

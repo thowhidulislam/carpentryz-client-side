@@ -5,16 +5,14 @@ const AllOrdersRow = ({ allOrder, index, refetch, setDeleteOrder }) => {
   const { _id } = allOrder;
   const handlePaid = async (id) => {
     await axios
-      .patch(`https://carpentryz-server-side.vercel.app/order/admin/paid/${id}`)
+      .patch(`https://carpentryz-server.onrender.com/order/admin/paid/${id}`)
       .then(function (response) {
         refetch();
       });
   };
   const handleShipped = async (id) => {
     await axios
-      .patch(
-        `https://carpentryz-server-side.vercel.app/order/admin/shipped/${id}`
-      )
+      .patch(`https://carpentryz-server.onrender.com/order/admin/shipped/${id}`)
       .then(function (response) {
         refetch();
       });

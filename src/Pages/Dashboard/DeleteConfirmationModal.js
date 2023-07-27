@@ -5,7 +5,7 @@ const DeleteConfirmationModal = ({ deleteOrder, setDeleteOrder, refetch }) => {
   const { _id } = deleteOrder;
   const handleDeleteOrder = () => {
     axios
-      .delete(`https://carpentryz-server-side.vercel.app/order/admin/${_id}`, {
+      .delete(`https://carpentryz-server.onrender.com/order/admin/${_id}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },

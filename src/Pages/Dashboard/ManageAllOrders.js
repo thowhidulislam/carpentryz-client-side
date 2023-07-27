@@ -14,7 +14,7 @@ const ManageAllOrders = () => {
     isLoading,
     refetch,
   } = useQuery("allOrders", () =>
-    fetch("https://carpentryz-server-side.vercel.app/allOrders", {
+    fetch("https://carpentryz-server.onrender.com/allOrders", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

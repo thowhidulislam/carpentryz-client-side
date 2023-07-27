@@ -9,7 +9,7 @@ const useAdmin = (user) => {
     const email = user?.email;
     if (email) {
       axios
-        .get(`https://carpentryz-server-side.vercel.app/admin/${email}`, {
+        .get(`https://carpentryz-server.onrender.com/admin/${email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
