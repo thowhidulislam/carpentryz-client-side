@@ -1,6 +1,6 @@
 # Carpentryz
 
-## To visit live website [click here](https://carpentryz.web.app/)
+## To visit live website [click here](https://carpentryz.netlify.app)
 
 ## Features and functionality
 - Inside dashboard have options like add products, manage products for admin.
@@ -17,4 +17,5 @@
 - Express
 - Stripe 
 - Tailwind 
+- React query
 
