@@ -1,22 +1,23 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import Product from "../Home/Product";
+import Loading from "../Shared/Loading/Loading";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    axios
-      .get("https://carpentryz-server-side.vercel.app/products")
-      .then(function (response) {
-        console.log(response);
-        setProducts(response?.data?.products);
-      });
-  }, []);
+  const { data, isLoading } = useQuery("featureProducts", () =>
+    fetch("https://carpentryz-server-side.vercel.app/products").then((res) =>
+      res.json()
+    )
+  );
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="sm:px-4 lg:px-24 my-12">
       <h1 className="text-4xl font-bold text-center">Featured Products</h1>
       <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6">
-        {products.map((product) => (
+        {data?.products?.map((product) => (
           <Product key={product._id} product={product}></Product>
         ))}
       </div>
